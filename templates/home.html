@@ -1,6 +1,26 @@
 {% extends 'base.html' %}
 
 {% block body %}
+<div class="container text-center">
+  {% load static %}
+
+<form action="/legend" method='GET'>
+<div class="form-row align-items-center">
+  <div class="col-sm-3 my-1">
+    <input type="text" class="form-control" name="name" placeholder="Summoner name..." required>
+  </div>
+  <div class="col-sm-3 my-1">
+    <select id="opt" class="custom-select my-1 mr-sm-2" name="region">
+      <option value="na1">NA</option>
+      <option value="eu1">EU</option>
+    </select>
+  </div>
+  <div class="col-auto my-1">
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+  </div>
+  </form>
+<!---
 <form action="/legend" method='GET'>
   <input id="summName" type="text" name="name" required>
   <select name="region">
@@ -9,6 +29,9 @@
   </select>
   <input type="submit" value="Submit">
 </form>
+--->
+
+</div>
 
 
 {% endblock %}
