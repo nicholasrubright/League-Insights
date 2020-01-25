@@ -2,6 +2,11 @@ body {
   background-color: #23272a;
 }
 
-#opt {
-  width: 100px;
+
+img {
+  border-radius: 50%;
+}
+
+#profile h1 {
+  color: white;
 }

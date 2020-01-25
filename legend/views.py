@@ -17,7 +17,7 @@ def legend_view(request):
             sumDict = {
                 'topChampMastery': sumTop,
                 'topChampMasteryIconURL': URL,
-                'summonerName': name,
+                'summonerName': name
             }
             return render(request, 'legend.html', sumDict)
     except:
