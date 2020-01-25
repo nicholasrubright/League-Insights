@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<form action="/legend" method='GET'>
+  <input id="summName" type="text" name="name" required>
+  <select name="region">
+    <option value="na1">NA</option>
+    <option value="eu1">EU</option>
+  </select>
+  <input type="submit" value="Submit">
+</form>
+
+
+{% endblock %}
