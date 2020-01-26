@@ -12,13 +12,17 @@ def legend_view(request):
             name = request.GET.get('name')
             region = request.GET.get('region')
             sum = Summoner(name, region)
-            sumTop = sum.getTopMastery()
-            URL = getChampIcon(sumTop)
-            sumDict = {
-                'topChampMastery': sumTop,
-                'topChampMasteryIconURL': URL,
-                'summonerName': name
+            #sumTop = sum.getTopMastery()
+            masteryList = sum.getTop3Mastery()
+            #URL = getChampIcon(sumTop)
+            list_dict = {
+                'mastery_list': masteryList
             }
-            return render(request, 'legend.html', sumDict)
+            #sumDict = {
+            #    'topChampMastery': sumTop,
+            #    'topChampMasteryIconURL': URL,
+            #    'summonerName': name
+            #}
+            return render(request, 'legend.html', list_dict)
     except:
         raise Http404('Page does not exist')

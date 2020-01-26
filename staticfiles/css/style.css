@@ -1,7 +1,16 @@
-#mystuff {
+body {
   background-color: #23272a;
 }
 
-.mystuff {
-  background-color: #23272a;
+
+img {
+  border-radius: 50%;
+}
+
+#profile h1 {
+  color: white;
+}
+
+#champ h2 {
+  color: white;
 }

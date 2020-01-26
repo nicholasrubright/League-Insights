@@ -3,9 +3,13 @@
 {% block body %}
 
 <div id="profile">
-  <h1> {{ summonerName }}
-  <h1> Top Champion:  {{ topChampMastery }} </h1>
-  <img src="{{ topChampMasteryIconURL }}"/>
+  {% for x in mastery_list %}
+  <div id="champs" class="container-fluid">
+    <h1> {{ x.name }} </h1>
+    <p id="level"> {{ x.level }} </p>
+    <p> {{ x.points }} </p>
+  </div>
+  {% endfor %}
 </div>
 
 {% endblock %}

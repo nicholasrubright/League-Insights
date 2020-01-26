@@ -35,6 +35,29 @@ class Summoner:
         name = getChampName(str(topChampID))
         return name
 
+
+    '''
+
+    Returns a list of the 3 top champion masteries for a summoner
+
+    @params self
+    @returns dict of data
+
+    '''
+
+    def getTop3Mastery(self):
+
+        mastery_list = []
+        for i in range(3):
+            data = (r.champion_mastery.by_summoner(self.region, self.id))[i]
+            masteryData = {
+                    'name': getChampName(str(data['championId'])),
+                    'level': data['championLevel'],
+                    'points': data['championPoints']
+                }
+            mastery_list.append(masteryData)
+        return mastery_list
+
 #p = Summoner("koalth", "na1")
-#data = p.getTopMastery()
+#data = p.getTop3Mastery()
 #print(data)
