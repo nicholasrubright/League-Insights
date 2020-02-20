@@ -2,14 +2,33 @@
 
 {% block body %}
 
-<div id="profile">
-  {% for x in mastery_list %}
-  <div id="champs" class="container-fluid">
-    <h1> {{ x.name }} </h1>
-    <p id="level"> {{ x.level }} </p>
-    <p> {{ x.points }} </p>
-  </div>
-  {% endfor %}
-</div>
+<div class="container-fluid h-100" id="page">
+  <div class="row h-100">
+    <div class="col-sm-2" id="profile">
+      {% for x in sumdata %}
+      <img src="{{ x.sumIcon }}">
+      <h2>{{ x.sumName }}</h2>
+      {% endfor %}
+    </div>
 
+    <div class="col-sm-10">
+      <div id="champs" class="container-fluid">
+          {% for x in mastery_list %}
+          <div class="row rounded">
+            <div class="col-sm">
+              <img src="{{ x.champIcon }}">
+            </div>
+            <div class="col-sm">
+              <h1> {{ x.name }} </h1>
+            </div>
+            <div class="col-sm">
+              <p> {{ x.level }} &nbsp; {{ x.points }} </p>
+          </div>
+          </div>
+      {% endfor %}
+      </div>
+    </div>
+
+  </div>
+</div>
 {% endblock %}

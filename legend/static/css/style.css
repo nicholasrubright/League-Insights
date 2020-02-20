@@ -1,15 +1,23 @@
 body {
   background-color: #23272a;
-}
-
-img {
-  border-radius: 50%;
-}
-
-#profile h1 {
+  height: 100%;
   color: white;
 }
 
-#level p {
-  color: white !important;
+#page {
+  margin: 5px;
+}
+
+#champs img {
+  border-radius: 50%;
+  height: 50px;
+}
+
+.row {
+  height: 100%;
+}
+
+#profile img {
+  border: 5px solid;
+  border-color: blue;
 }

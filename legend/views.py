@@ -13,9 +13,11 @@ def legend_view(request):
             region = request.GET.get('region')
             sum = Summoner(name, region)
             #sumTop = sum.getTopMastery()
+            sumData = sum.getData()
             masteryList = sum.getTop3Mastery()
             #URL = getChampIcon(sumTop)
             list_dict = {
+                'sumdata': sumData,
                 'mastery_list': masteryList
             }
             #sumDict = {

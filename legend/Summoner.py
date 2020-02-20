@@ -10,6 +10,10 @@ def getChampIcon(name):
     url = 'http://ddragon.leagueoflegends.com/cdn/' + version + '/img/champion/' + name + '.png'
     return url
 
+def getProfileIcon(iconID):
+    url = 'http://ddragon.leagueoflegends.com/cdn/' + version + '/img/profileicon/' + iconID + '.png'
+    return url
+
 def getChampName(champID):
         for i in champList:
             champ = champList[i]
@@ -25,6 +29,8 @@ class Summoner:
         self.region = region
         self.info = r.summoner.by_name(region, name)
         self.id = self.info['id']
+        self.profileIcon = self.info['profileIconId']
+        self.sumLevel = self.info['summonerLevel']
 
     def getInfo(self):
         return self.id
@@ -35,6 +41,16 @@ class Summoner:
         name = getChampName(str(topChampID))
         return name
 
+    def getData(self):
+        sum_list = []
+
+        sum_data = {
+            'sumName': str(self.name),
+            'sumIcon': getProfileIcon(str(self.profileIcon)),
+            'sumLevel': str(self.sumLevel)
+        }
+
+        return sum_data
 
     '''
 
@@ -52,6 +68,7 @@ class Summoner:
             data = (r.champion_mastery.by_summoner(self.region, self.id))[i]
             masteryData = {
                     'name': getChampName(str(data['championId'])),
+                    'champIcon': getChampIcon(getChampName(str(data['championId']))),
                     'level': data['championLevel'],
                     'points': data['championPoints']
                 }

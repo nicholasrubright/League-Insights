@@ -1,16 +1,11 @@
 body {
-  background-color: #23272a;
+  background-color: white;
 }
-
 
 img {
   border-radius: 50%;
 }
 
-#profile h1 {
-  color: white;
-}
-
-#champ h2 {
-  color: white;
+p {
+  color: #23272a;
 }
