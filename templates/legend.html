@@ -2,33 +2,46 @@
 
 {% block body %}
 
-<div class="container-fluid h-100" id="page">
-  <div class="row h-100">
-    <div class="col-sm-2" id="profile">
-      {% for x in sumdata %}
-      <img src="{{ x.sumIcon }}">
-      <h2>{{ x.sumName }}</h2>
-      {% endfor %}
-    </div>
 
-    <div class="col-sm-10">
-      <div id="champs" class="container-fluid">
-          {% for x in mastery_list %}
-          <div class="row rounded">
-            <div class="col-sm">
-              <img src="{{ x.champIcon }}">
-            </div>
-            <div class="col-sm">
-              <h1> {{ x.name }} </h1>
-            </div>
-            <div class="col-sm">
-              <p> {{ x.level }} &nbsp; {{ x.points }} </p>
-          </div>
-          </div>
-      {% endfor %}
+<div class="container-fill">
+  <div class="row">
+    <div id="profile" class="col-3">
+      {% if sumdata %}
+      <h1>{{ sumdata.proName }}</h1>
+      <p> {{ sumdata.proLevel }}</p>
+      <img src="{{ sumdata.proIconURL }}">
+      {% endif %}
+    </div>
+    <div class="col-7">
+      {% for x in masterydata %}
+      <div class="container">
+        <h1>{{ x.champName }}</h1>
+        <img id="champIcon" src="{{ x.champIconURL }}">
       </div>
+      {% endfor %}
     </div>
-
   </div>
 </div>
+
+
+<!--
+<div class="container" id="profile">
+  {% if sumdata %}
+  <h1>{{ sumdata.proName }}</h1>
+  <p> {{ sumdata.proLevel }}</p>
+  <img src="{{ sumdata.proIconURL }}">
+  <h1> {{ masterydata.champName }} </h1>
+  {% endif %}
+</div>
+
+<div class="container" id="content">
+  {% for x in masterydata %}
+  <div class="row">
+    <h1>{{ x.champName }}</h1>
+    <img id="champIcon" src="{{ x.champIconURL }}">
+  </div>
+  {% endfor %}
+</div>
+-->
+
 {% endblock %}

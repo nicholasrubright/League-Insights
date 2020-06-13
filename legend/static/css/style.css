@@ -1,11 +1,7 @@
 body {
-  background-color: #23272a;
+  background-color: #271f41;
   height: 100%;
   color: white;
-}
-
-#page {
-  margin: 5px;
 }
 
 #champs img {
@@ -13,11 +9,20 @@ body {
   height: 50px;
 }
 
-.row {
-  height: 100%;
+
+#profile {
+  background-color: white !important;
 }
 
 #profile img {
   border: 5px solid;
-  border-color: blue;
+  border-color: silver;
+  border-radius: 50%;
+  height: 200px;
+  width: 200px;
+}
+
+
+#champIcon {
+  border-radius: 50%;
 }
