@@ -123,7 +123,7 @@ class Summoner:
     def getMatchHistory(self):
         match_history_by_id = []
         matchHistory = r.match.matchlist_by_account(self.region, self.accountId)
-
+        #print(self.name)
         # Try 50 and see the time
 
         for x in range(10):
@@ -149,7 +149,7 @@ class Summoner:
 
         match_data = r.match.by_id(self.region, matchId)
         for i in range(10):
-            if match_data['participantIdentities'][i]['player']['accountId'] == p.accountId:
+            if match_data['participantIdentities'][i]['player']['accountId'] == self.accountId:
                 participantId = match_data['participantIdentities'][i]['participantId']
         for i in range(10):
             if match_data['participants'][i]['participantId'] == participantId:

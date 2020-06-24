@@ -19,8 +19,6 @@
         {% for x in masterydata %}
         <div id="mastery_entity" class="container d-flex align-items-center justify-content-between">
           <img src="{{ x.champIconURL }}">
-          <h2>{{ x.champName }}</h2>
-          <h2>{{ x.masteryLevel }}</h2>
           <h2>{{ x.masteryPoints }}</h2>
         </div>
         {% endfor %}
@@ -33,7 +31,7 @@
       <h1>Match History</h1>
       {% if matchhistory %}
         {% for y in matchhistory %}
-        <div id="match_bar" class="rounded-pill d-flex align-items-center justify-content-between container-fill">
+        <div id="match_bar" class="d-flex align-items-center justify-content-between container-fill rounded-pill">
           <img src="{{ y.sumChampIconURL }}">
           <h2>{{ y.win_lose }}</h2>
           <h2>{{ y.sumChamp }}</h2>

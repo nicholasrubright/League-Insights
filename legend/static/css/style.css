@@ -20,6 +20,8 @@
 
 #mastery img {
   border-radius: 50%;
+  height: 100px;
+  width: 100px;
 }
 
 .col-md-10 {
@@ -36,6 +38,7 @@
   align-content: center;
   padding: 15px;
   margin: 10px;
+  border-radius: 50rem!important;
 }
 
 #match_bar img {

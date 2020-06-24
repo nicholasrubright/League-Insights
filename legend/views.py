@@ -7,6 +7,7 @@ from legend.summ import Summoner
 #from legend.Summoner import getChampIcon
 # Create your views here.
 
+
 def legend_view(request):
     try:
         if request.method == 'GET':
@@ -21,7 +22,6 @@ def legend_view(request):
                 'masterydata': masteryData,
                 'matchhistory': matchHistory,
             }
-            print(list_dict)
             return render(request, 'legend.html', list_dict)
     except:
         raise Http404('Page does not exist')
