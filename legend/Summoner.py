@@ -1,3 +1,4 @@
+'''
 from django.conf import settings
 from riotwatcher import LolWatcher, ApiError
 
@@ -29,7 +30,6 @@ class Summoner:
         }
         return profile
 
-'''
     def getTopMastery(self):
         topChampID = ((r.champion_mastery.by_summoner(self.region, self.id))[0])['championId']
 
@@ -54,9 +54,6 @@ class Summoner:
     @params self
     @returns dict of data
 
-    '''
-
-'''
     def getTop3Mastery(self):
 
         mastery_list = []
@@ -70,7 +67,8 @@ class Summoner:
                 }
             mastery_list.append(masteryData)
         return mastery_list
-'''
 #p = Summoner("koalth", "na1")
 #data = p.getTop3Mastery()
 #print(data)
+
+'''

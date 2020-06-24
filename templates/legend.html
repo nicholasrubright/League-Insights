@@ -2,46 +2,48 @@
 
 {% block body %}
 
-
-<div class="container-fill">
+<div class="container-fluid">
   <div class="row">
-    <div id="profile" class="col-3">
-      {% if sumdata %}
-      <h1>{{ sumdata.proName }}</h1>
-      <p> {{ sumdata.proLevel }}</p>
-      <img src="{{ sumdata.proIconURL }}">
+    <div id="profile" class="col-md-2">
+
+      <div id="sumProfile" class="d-flex flex-column align-items-center">
+        {% if sumdata %}
+        <h1>{{ sumdata.proName }}</h1>
+        <img src="{{ sumdata.proIconURL }}">
+        <h3>{{ sumdata.proLevel }}</h3>
+        {% endif %}
+      </div>
+
+      <div id="mastery" class="container">
+
+        {% for x in masterydata %}
+        <div id="mastery_entity" class="container d-flex align-items-center justify-content-between">
+          <img src="{{ x.champIconURL }}">
+          <h2>{{ x.champName }}</h2>
+          <h2>{{ x.masteryLevel }}</h2>
+          <h2>{{ x.masteryPoints }}</h2>
+        </div>
+        {% endfor %}
+
+      </div>
+
+    </div>
+
+    <div id="content" class="col-md-10">
+      <h1>Match History</h1>
+      {% if matchhistory %}
+        {% for y in matchhistory %}
+        <div id="match_bar" class="rounded-pill d-flex align-items-center justify-content-between container-fill">
+          <img src="{{ y.sumChampIconURL }}">
+          <h2>{{ y.win_lose }}</h2>
+          <h2>{{ y.sumChamp }}</h2>
+          <h2><span style="color: green;">{{ y.sumKills }}</span>/<span style="color: red;">{{ y.sumDeaths }}</span>/<span>{{ y.sumAssists }}</span></h2>
+        </div>
+        {% endfor %}
       {% endif %}
     </div>
-    <div class="col-7">
-      {% for x in masterydata %}
-      <div class="container">
-        <h1>{{ x.champName }}</h1>
-        <img id="champIcon" src="{{ x.champIconURL }}">
-      </div>
-      {% endfor %}
-    </div>
+
   </div>
 </div>
-
-
-<!--
-<div class="container" id="profile">
-  {% if sumdata %}
-  <h1>{{ sumdata.proName }}</h1>
-  <p> {{ sumdata.proLevel }}</p>
-  <img src="{{ sumdata.proIconURL }}">
-  <h1> {{ masterydata.champName }} </h1>
-  {% endif %}
-</div>
-
-<div class="container" id="content">
-  {% for x in masterydata %}
-  <div class="row">
-    <h1>{{ x.champName }}</h1>
-    <img id="champIcon" src="{{ x.champIconURL }}">
-  </div>
-  {% endfor %}
-</div>
--->
 
 {% endblock %}

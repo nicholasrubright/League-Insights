@@ -25,11 +25,11 @@ class Summoner:
         self.region = region
         self.info = r.summoner.by_name(region, name)
         self.id = self.info['id']
+        self.accountId = self.info['accountId']
         self.profileIconId = str(self.info['profileIconId'])
         
         self.version = (r.data_dragon.versions_for_region(region))['n']
         self.champList = (r.data_dragon.champions(self.version['champion']))['data']
-
 
     def profileData(self):
         proIconURL = 'http://ddragon.leagueoflegends.com/cdn/' + self.version['profileicon'] + '/img/profileicon/' + str(self.profileIconId) + '.png'
@@ -41,24 +41,34 @@ class Summoner:
         }
         return profileData
 
-
-    def getMastery(self):
-        mastery_list = []
-        mastery_data = r.champion_mastery.by_summoner(self.region, self.id)
-
-        def getChampName(self, champKey):
+    def getChampName(self, champKey):
             for x in self.champList:
                 if self.champList[x]['key'] == champKey:
                     return x
 
-        def getChampIconURL(self, champName):
+    def getChampIconURL(self, champName):
             champURL = 'http://ddragon.leagueoflegends.com/cdn/' + self.version['champion'] + '/img/champion/' + champName + '.png'
             return champURL
 
+    def getMastery(self):
+        mastery_list = []
+        mastery_data = r.champion_mastery.by_summoner(self.region, self.id)
+        '''
+        def getChampName(self, champKey):
+            for x in self.champList:
+                if self.champList[x]['key'] == champKey:
+                    return x
+        '''
+
+        '''
+        def getChampIconURL(self, champName):
+            champURL = 'http://ddragon.leagueoflegends.com/cdn/' + self.version['champion'] + '/img/champion/' + champName + '.png'
+            return champURL
+        '''
         for i in range(3):
             champKey = str(mastery_data[i]['championId'])
-            champName = getChampName(self, champKey)
-            champIconURL = getChampIconURL(self, champName)
+            champName = self.getChampName(champKey)
+            champIconURL = self.getChampIconURL(champName)
             mastery_set = {
                 'champName': champName,
                 'champIconURL': champIconURL,
@@ -68,7 +78,112 @@ class Summoner:
             mastery_list.append(mastery_set)
         return mastery_list
 
+    def getMatchHistory(self):
+        match_history_by_id = []
+        matchHistory = r.match.matchlist_by_account(self.region, self.accountId)
+        for x in matchHistory['matches']:
+            match_history_by_id.append(x['gameId'])
+        return match_history_by_id
+
+    def getMatchDetails(self, matchId):
+        '''
+        def getChampName(self, champKey):
+            for x in self.champList:
+                if self.champList[x]['key'] == champKey:
+                    return x
+        '''
+        match_data = r.match.by_id(self.region, matchId)
+        for i in range(10):
+            if match_data['participantIdentities'][i]['player']['accountId'] == p.accountId:
+                participantId = match_data['participantIdentities'][i]['participantId']
+        for i in range(10):
+            if match_data['participants'][i]['participantId'] == participantId:
+                sumData = match_data['participants'][i]
+                sumChamp = sumData['championId']
+                sumKill = sumData['stats']['kills']
+                sumDeaths = sumData['stats']['deaths']
+                sumAssists = sumData['stats']['assists']
+                sumTeam = sumData['teamId']
+        for i in range(2):
+            if(match_data['teams'][i]['teamId']) == sumTeam:
+                win_lose = match_data['teams'][i]['win']
+        
+        sumChampName = self.getChampName(str(sumChamp))
+        sumChampIcon = self.getChampIconURL(sumChampName)
+        match_details = {
+            'sumChamp': sumChampName,
+            'sumChampIconURL': sumChampIcon,
+            'sumKills': sumKill,
+            'sumDeaths': sumDeaths,
+            'sumAssists': sumAssists,
+            'win_lose' : win_lose
+        }
+        return match_details
+
+    def getMatchHistory(self):
+        match_history_by_id = []
+        matchHistory = r.match.matchlist_by_account(self.region, self.accountId)
+
+        # Try 50 and see the time
+
+        for x in range(10):
+            match = matchHistory['matches'][x]
+            match_history_by_id.append(match['gameId']) 
+        
+        '''
+        for x in matchHistory['matches']:
+            match_history_by_id.append(x['gameId'])
+        '''
+
+        return match_history_by_id
+    
+    def getMatchDetails(self, matchId):
+
+        # Move outside of this method
+        '''
+        def getChampName(self, champKey):
+            for x in self.champList:
+                if self.champList[x]['key'] == champKey:
+                    return x
+        '''
+
+        match_data = r.match.by_id(self.region, matchId)
+        for i in range(10):
+            if match_data['participantIdentities'][i]['player']['accountId'] == p.accountId:
+                participantId = match_data['participantIdentities'][i]['participantId']
+        for i in range(10):
+            if match_data['participants'][i]['participantId'] == participantId:
+                sumData = match_data['participants'][i]
+                sumChamp = sumData['championId']
+                sumKill = sumData['stats']['kills']
+                sumDeaths = sumData['stats']['deaths']
+                sumAssists = sumData['stats']['assists']
+                sumTeam = sumData['teamId']
+        for i in range(2):
+            if(match_data['teams'][i]['teamId']) == sumTeam:
+                win_lose = match_data['teams'][i]['win']
+        
+        sumChampName = self.getChampName(str(sumChamp))
+        sumChampIcon = self.getChampIconURL(sumChampName)
+        match_details = {
+            'sumChamp': sumChampName,
+            'sumChampIconURL': sumChampIcon,
+            'sumKills': sumKill,
+            'sumDeaths': sumDeaths,
+            'sumAssists': sumAssists,
+            'win_lose' : win_lose
+        }
+        return match_details
+
+    def getCompleteMatchHistory(self):
+        match_history = []
+        sumMatchHistory = self.getMatchHistory()
+        for x in sumMatchHistory:
+            matchData = self.getMatchDetails(x)
+            match_history.append(matchData)
+        return match_history
 
 #p = Summoner('koalth', 'na1')
 #print(p.getMastery())
 #print(p.profileData())
+#print(p.getCompleteMatchHistory())

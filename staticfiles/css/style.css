@@ -1,3 +1,50 @@
+#profile {
+  background-color: #23272a;
+  color: white;
+}
+
+#sumProfile img {
+  border-radius: 50%;
+  height: 50%;
+  width: 50%;
+}
+
+#mastery {
+  margin-top: 75%;
+  padding: 10px;
+}
+
+#mastery_entity {
+  padding: 20px;
+}
+
+#mastery img {
+  border-radius: 50%;
+}
+
+.col-md-10 {
+  overflow: hidden;
+}
+
+.col-md-2 {
+  padding-bottom: 100%;
+  margin-bottom: -100%;
+}
+
+#match_bar {
+  background-color: gray;
+  align-content: center;
+  padding: 15px;
+  margin: 10px;
+}
+
+#match_bar img {
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+}
+
+/*
 body {
   background-color: white;
 }
@@ -9,3 +56,36 @@ img {
 p {
   color: #23272a;
 }
+*/
+
+/*
+
+body {
+  background-color: #271f41;
+  height: 100%;
+  color: white;
+}
+
+#champs img {
+  border-radius: 50%;
+  height: 50px;
+}
+
+
+#profile {
+  background-color: white !important;
+}
+
+#profile img {
+  border: 5px solid;
+  border-color: silver;
+  border-radius: 50%;
+  height: 200px;
+  width: 200px;
+}
+
+
+#champIcon {
+  border-radius: 50%;
+}
+*/

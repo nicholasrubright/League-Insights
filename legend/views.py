@@ -15,10 +15,13 @@ def legend_view(request):
             sum = Summoner(name, region)
             sumData = sum.profileData()
             masteryData = sum.getMastery()
+            matchHistory = sum.getCompleteMatchHistory()
             list_dict = {
                 'sumdata': sumData,
                 'masterydata': masteryData,
+                'matchhistory': matchHistory,
             }
+            print(list_dict)
             return render(request, 'legend.html', list_dict)
     except:
         raise Http404('Page does not exist')
