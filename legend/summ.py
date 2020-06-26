@@ -16,6 +16,12 @@ r = LolWatcher(RIOT_API_KEY)
 Various functions that when called retrieve and return data on user
 
 
+Todo:
+    1. Add items to the match history, need more data to display for each match
+    2. Comment code through project, explaining each method of the Summoner class, as well as JSON data
+    3. Clean up website UI / clean up code
+    4. Finish README with description and demo
+
 '''
 
 class Summoner:
@@ -31,6 +37,17 @@ class Summoner:
         self.version = (r.data_dragon.versions_for_region(region))['n']
         self.champList = (r.data_dragon.champions(self.version['champion']))['data']
 
+
+    '''
+    profileData
+
+    returns dict containing user's profile name, profile level, and profile icon URL
+
+    @Params self
+
+    @Return dict
+
+    '''
     def profileData(self):
         proIconURL = 'http://ddragon.leagueoflegends.com/cdn/' + self.version['profileicon'] + '/img/profileicon/' + str(self.profileIconId) + '.png'
 
@@ -40,6 +57,8 @@ class Summoner:
             'proIconURL': proIconURL
         }
         return profileData
+
+
 
     def getChampName(self, champKey):
             for x in self.champList:
