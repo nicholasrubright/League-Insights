@@ -6,18 +6,18 @@ League Project is a dynamic web application that utilizes the Riot Games API to 
 
 # Technologies
 
-## Frontend
+### Frontend
 1. HTML
 2. CSS
 3. JavaScript
 4. [Bootstrap 4](https://getbootstrap.com/)
 
-## Backend
+### Backend
 1. Django
 2. Python
 
-## API
+### API
 1. [Riot Games API for League of Legends](https://developer.riotgames.com/)
 
-## Additional Libraries
+### Additional Libraries
 1. [RiotWatcher](https://github.com/pseudonym117/Riot-Watcher)
