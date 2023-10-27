@@ -1,8 +1,8 @@
-# League Project
+# League Insights
 A dynamic web application built using the Django framework and the Riot API.
 
 # About
-League Project is a dynamic web application that utilizes the Riot Games API to retrieve in-game statistics about a player's game profile. So far it displays the player's summoner profile information, their top 3 mastery champions and match history. 
+League Insights is a dynamic web application that utilizes the Riot Games API to retrieve in-game statistics about a player's game profile. So far it displays the player's summoner profile information, their top 3 mastery champions and match history. 
 
 # Technologies
 
